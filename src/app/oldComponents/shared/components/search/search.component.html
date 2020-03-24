@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row header-serch-container">
+    <div class="container">
+      <div class="row">
+        <div  class="col-lg-3">
+          <div class="main-menu-container">
+            <div class="btn-group">
+              <button id="single-button" type="button" class="btn btn-primary mb-0 pb-0" (click)="isCollapsed = !isCollapsed">
+                <i class="material-icons">&#xE5D2;</i>
+                <span>Areas</span>
+              </button>
+              <ul (mouseleave)="mouseleave($event)" class="dropdown-menu mt-0 pt-0" [ngbCollapse]="isCollapsed">
+                <li *ngFor="let searchNodeItem of searchNodeItems$ | async" class="dropdown-item" role="menuitem">
+                  <a style="cursor: pointer;" class="link" (click)="goToCoursesByArea(searchNodeItem.areaName)">{{searchNodeItem.areaName}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="search-container">
+            <input #searchInput type="text" name="search" placeholder="Advanced Search" required />
+            <button (click)="onSearch(searchInput.value)" class="search-button ripple">
+              <i class="material-icons">&#xE8B6;</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
